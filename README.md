@@ -1,67 +1,85 @@
-# 🤖 AI Engineer Portfolio
+# 🤖 AI / ML Engineer Portfolio — Stephen Gashoka
 
-This portfolio features advanced AI/ML projects with production-ready pipelines. It covers everything from LLM integration and model fine-tuning to deploying ML services and validating notebooks with CI workflows.
+> LLM pipelines, model training, and AI systems built for real-world deployment. Focused on African language models and accessibility — bringing AI to underserved communities in East Africa.
 
-## 🧠 Highlights
-- LLMs with Hugging Face Transformers
-- Model training and evaluation notebooks
-- MLOps-style workflow testing (nbmake, CI)
-- Checkpointing and model lifecycle
-- AI deployments with FastAPI & Docker
-  
-
-## Project List
-
-## 1. Multilingual Voice Agent for Public Services
-
-### Problem
-Citizens struggle to access government info in native languages via digital channels.
-
-### Solution
-Build a voice assistant that:
-- Converts speech to text using **Whisper**
-- Translates using **NLLB (No Language Left Behind)**
-- Queries a knowledge base using **RAG with LlamaIndex**
-- Speaks answers via **TTS (Bark or Coqui)**
-- Deployable via **Twilio Voice** or WhatsApp
-
-### Goals
-- Serve local languages like Swahili, Luo, Kikuyu, Somali
-- Provide answers about IDs, licenses, schools, etc.
-- Log anonymized usage metrics
+![Python](https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white)
+![PyTorch](https://img.shields.io/badge/PyTorch-EE4C2C?style=flat-square&logo=pytorch&logoColor=white)
+![HuggingFace](https://img.shields.io/badge/HuggingFace-FFD21E?style=flat-square&logo=huggingface&logoColor=black)
+![FastAPI](https://img.shields.io/badge/FastAPI-009688?style=flat-square&logo=fastapi&logoColor=white)
+![Docker](https://img.shields.io/badge/Docker-2496ED?style=flat-square&logo=docker&logoColor=white)
 
 ---
 
-## 2. African News Summarizer and Bias Detector
+## Projects
 
-### Problem
-News often contains bias and lacks multilingual accessibility.
+### 1. Multilingual Voice Agent for Public Services 🇰🇪
+**Problem:** Millions of Kenyans cannot access government information digitally because services are only available in English.
 
-### Solution
-Train a summarizer + bias detector:
-- **Fine-tune T5 or Falcon** on local news corpora
-- Build React frontend to enter URLs and summarize
-- Use **Hugging Face Transformers + Langchain**
+**Solution:** A voice assistant serving Swahili, Luo, Kikuyu, and Somali speakers.
 
-### Goals
-- Summarize articles in 3 languages
-- Classify for bias type: political, regional, tone
-- Suggest counterpoints and sources
+**Architecture:**
+- Speech-to-text: **OpenAI Whisper** (multilingual, fine-tuned on Kenyan accent data)
+- Translation layer: **NLLB (No Language Left Behind)** by Meta
+- Knowledge retrieval: **RAG pipeline with LlamaIndex** over government FAQ corpus
+- TTS output: **Coqui TTS** (supports Swahili synthesis)
+- Delivery: **Twilio Voice** or WhatsApp Business API
+
+**Why this matters:** This is a genuine unmet need — Kenya has 68 languages and English-only digital services exclude most rural citizens.
+
+**Stack:** Python · Whisper · NLLB · LlamaIndex · LangChain · Coqui TTS · FastAPI · Twilio
 
 ---
 
-## 3. Medical Imaging Assistant for Understaffed Clinics
+### 2. African News Summarizer & Bias Detector
+**Problem:** East African news consumers lack tools to identify media bias or access multilingual summaries.
 
-### Problem
-Clinics lack radiologists to interpret X-rays and CT scans.
+**Architecture:**
+- Fine-tuned **T5** on East African news corpus (sourced from Daily Nation, The Standard, NTV)
+- Bias classification model trained on annotated political, regional, and tonal bias labels
+- React frontend: paste URL → get summary + bias breakdown + counterpoint suggestions
+- **Hugging Face Transformers + LangChain** for the inference pipeline
 
-### Solution
-Build a diagnostic model using:
-- **YOLOv8 + fastai** for object detection
-- Train on open datasets (NIH ChestX-ray14, VinDr)
-- Deploy via **Streamlit** or **Gradio** interface
+**Key ML decisions:**
+- Used LoRA fine-tuning to adapt T5 efficiently on limited GPU budget
+- Built a custom annotation schema for Kenyan political bias (regional + ethnic dimensions not present in Western bias datasets)
 
-### Goals
-- Identify common findings (TB, pneumonia, fractures)
-- Allow image uploads from mobile
-- Generate PDF reports
+**Stack:** Python · PyTorch · HuggingFace Transformers · T5 · LangChain · React · FastAPI
+
+---
+
+### 3. Medical Imaging Assistant for Understaffed Clinics
+**Problem:** Rural Kenyan clinics have X-ray machines but no radiologists to interpret results.
+
+**Architecture:**
+- Object detection: **YOLOv8** fine-tuned on NIH ChestX-ray14 + VinDr-CXR datasets
+- Training pipeline with **fastai** for transfer learning
+- Deployed via **Gradio** (mobile-friendly image upload interface)
+- Generates PDF diagnostic summary reports
+
+**Ethical framing:** This is a decision-support tool, not a replacement for clinicians. All outputs are clearly labelled as AI-assisted suggestions requiring clinical review.
+
+**Stack:** Python · YOLOv8 · fastai · PyTorch · Gradio · ReportLab
+
+---
+
+## MLOps & deployment practices
+- Model versioning with **MLflow**
+- Notebook testing with **nbmake** in CI
+- Model serving via **FastAPI + Docker**
+- Experiment tracking on **Weights & Biases**
+
+---
+
+## Skills demonstrated
+| Area | Technologies |
+|---|---|
+| LLMs & RAG | LangChain, LlamaIndex, OpenAI API, Hugging Face |
+| Model training | PyTorch, fastai, LoRA fine-tuning |
+| Speech/NLP | Whisper, NLLB, spaCy, T5 |
+| Computer Vision | YOLOv8, OpenCV |
+| MLOps | MLflow, W&B, nbmake, Docker |
+| Serving | FastAPI, Gradio, Streamlit |
+
+---
+
+📧 stephengachoka57@gmail.com | 🌐 [stephengachoka.co.ke](https://stephengachoka.co.ke) | 📍 Nairobi, Kenya
